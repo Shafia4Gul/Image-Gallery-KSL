@@ -1,0 +1,47 @@
+<form action="like_post.php" method="POST">
+<input type="submit" value= "Wanna Like Post in Gallery" >
+<?php
+$find_likes = mysqli_query($con , "SELECT * FROM user_info");
+$i=0;
+while($row = mysqli_fetch_assoc($find_likes))
+{
+	
+	//$likes_name = $row['name'];
+	$likes = $row['likepost'];
+	
+	
+	//echo "$likes_name  likes your  post <p> " ;
+	$i++;
+}
+    echo"</br>";
+	echo "<b>$i people like  post</b>";
+	echo"</br>";
+
+?>    
+
+<?php
+
+$con= mysqli_connect("localhost" , "root", "");
+			mysqli_select_db($con,'comments');
+	 
+$find_comments = mysqli_query($con , "SELECT * FROM comments");
+$i=0;
+ echo"</br>"; echo"</br>";
+   echo"Comments:";
+while($row = mysqli_fetch_assoc($find_comments))
+{
+	
+	$comments_name = $row['name'];
+	$comments = $row['comment'];
+
+	 echo"</br>";
+	echo "new comment added to your post";
+	echo "</br>";
+	echo "$comments_name  comment <b> $comments  </b> on your  post <p> " ;
+	$i++;
+}
+    
+	echo "<b> <i> <u>  $i people commented on your   post </u> </i></b>";
+
+?>
+ </div> 
